@@ -1,11 +1,11 @@
 <?php
    include("config.php");
-   session_start();
- $error='';
+   $error='';
+    session_start();
+
   if(isset($_SESSION['login_user'])){
-   header("location:welcome.php");
-  } 
-  if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password']) ) {
+ header("location:welcome.php");
+  }  if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password']) ) {
     // username and password sent from form
    
     $myusername = mysqli_real_escape_string($db,$_POST['username']);
@@ -24,14 +24,10 @@
        $_SESSION['login_user'] = $myusername;
      
        header("location: welcome.php");
-      }
-     else {
+    }else {
        $error = "Your Login Name or Password is invalid";
     }
  }
-  elseif(!isset($_POST['username']) && empty($_POST['username']) && !isset($_POST['password']) && empty($_POST['password']) ){
-    $error = "Your Login Name or Password is invalid";
-  }
 ?>
 <html>
    
